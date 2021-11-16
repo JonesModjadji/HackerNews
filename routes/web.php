@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HackerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/top','App\Http\Controllers\HackerController@list2' );
+Route::get('/new','App\Http\Controllers\HackerController@list3' );
+Route::get('/best','App\Http\Controllers\HackerController@list4' );
+Route::get('/view/{data1?}','App\Http\Controllers\HackerController@view' );
+Route::get('/viewc/{data1?}','App\Http\Controllers\HackerController@viewc' );
+Route::post('/hackernews','App\Http\Controllers\HackerController@addhackernews' )->name('add.hackernews');
+Route::get('/','App\Http\Controllers\HackerController@list');
+Route::get('/hackernews','App\Http\Controllers\HackerController@list');
