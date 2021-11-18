@@ -36,11 +36,10 @@
 <div id="Top" class="tabcontent" style="display: block;">
   <h2>New Stories</h2>
    <hr style="text-align:left;margin-left:0">
-   @foreach(array_combine($story1, $story11) as $data => $data1)
+   @foreach(array_combine($id, $title) as $data => $data1)
 <button id="button"  onclick="location.href='{{ url('view/'.$data1.'') }}'"><h4>{{$data}}</h4></button>
 <hr style="text-align:left;margin-left:0">
   @endforeach
-
 </div>
   </div>
 </body>

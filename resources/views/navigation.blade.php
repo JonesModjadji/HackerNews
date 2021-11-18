@@ -53,22 +53,7 @@
         <div class="card">
           <div class="card-header"> Add News</div>
           <div class="card-body">
-            <form action="{{ route('add.hackernews') }}" method="post" id="addhackernewsform">
-              @csrf
-              <div class="form-group">
-                <label for="">Comment</label>
-                <input type="text" name="by" class="form-control" placeholder="Comment Here">
-                <span class="text-danger error-text by-error"></span>
-              </div>
-              <div class="form-group">
-                <label for="">Comment 2</label>
-                <input type="text" name="title" class="form-control" placeholder="title Here ">
-                <span class="text-danger error-text title-error"></span>
-              </div>
-              <div class="form-group">
-                <button type="submit" name="save" class="btn btn-block btn-success">SUBMIT</button>
-              </div>
-            </form>
+            
           </div>
         </div>
       </div>
@@ -79,7 +64,7 @@
 <div id="Top" class="tabcontent">
   <h2>Top Stories</h2>
    <hr style="text-align:left;margin-left:0">
-   @foreach(array_combine($story1, $story11) as $data => $data1)
+   @foreach(array_combine($toptitle, $topid) as $data => $data1)
 <button id="button" onclick="location.href='{{ url('view/'.$data1.'') }}'"><h4>{{$data}}</h4></button>
 <hr style="text-align:left;margin-left:0">
   @endforeach
@@ -88,7 +73,7 @@
 <div id="New" class="tabcontent">
   <h2>New Stories</h2>
    <hr style="text-align:left;margin-left:0">
-   @foreach(array_combine($story2, $story22) as $data => $data1)
+   @foreach(array_combine($newtitle, $newid) as $data => $data1)
 <button id="button" onclick="location.href='{{ url('view/'.$data1.'') }}'"><h4>{{$data}}</h4></button>
 <hr style="text-align:left;margin-left:0">
   @endforeach
@@ -98,7 +83,7 @@
 <div id="Best" class="tabcontent">
   <h2>Best Stories</h2>
    <hr style="text-align:left;margin-left:0">
-   @foreach(array_combine($story3, $story33) as $data => $data1)
+   @foreach(array_combine($besttitle, $bestid) as $data => $data1)
 <button id="button" onclick="location.href='{{ url('view/'.$data1.'') }}'"><h4>{{$data}}</h4></button>
 <hr style="text-align:left;margin-left:0">
   @endforeach
@@ -116,41 +101,4 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
   <script src="{{asset('/js/app.js')}}"></script>
-  <script>
-    toastr.options.preventDuplications = true;
-    $.ajaxSetup({
-      headers:{
-        'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
-        }
-      });
-
-    $(function(){
-      //add new comment
-      $('#addhackernewsform').on('submit',function(e){
-        e.preventDefault();
-        var form = this;
-        $.ajax({
-          url:$(form).attr('action'),
-          method:$(form).attr('method'),
-          data:new FormData(form),
-          processData:false;
-          datatype:'json';
-          contentType:false;
-          beforeSend:function(){
-            $(form).find('span.error-text').text('');
-          },
-         success:function(data){
-          if(data.code==0){
-            $.each(data.error,function(prefix,val){
-              $(form).find('span.'+prefix+'_error').text(val[0]);
-            });
-          }else{
-            $(form)[0].reset();
-            alert(data.msg);
-          }
-          },
-        });
-      });
-    });
-  </script>
 </html>
