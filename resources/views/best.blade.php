@@ -39,7 +39,7 @@
    @for ($i =0; $i < 30; $i++)
         <button id="button"  onclick="location.href='{{ url('view/'.$bestid[$i].'') }}'"><h4>{{$besttitle[$i]}}</h4></button>
 <hr style="text-align:left;margin-left:0">
-       $endfor
+       @endfor
 
   
 
