@@ -64,7 +64,7 @@
 <div id="Top" class="tabcontent">
   <h2>Top Stories</h2>
    <hr style="text-align:left;margin-left:0">
-   @foreach(array_combine($toptitle, $topid) as $data => $data1)
+   @foreach(array_combine($story1, $story11) as $data => $data1)
 <button id="button" onclick="location.href='{{ url('view/'.$data1.'') }}'"><h4>{{$data}}</h4></button>
 <hr style="text-align:left;margin-left:0">
   @endforeach
@@ -73,7 +73,7 @@
 <div id="New" class="tabcontent">
   <h2>New Stories</h2>
    <hr style="text-align:left;margin-left:0">
-   @foreach(array_combine($newtitle, $newid) as $data => $data1)
+   @foreach(array_combine($story2, $story22) as $data => $data1)
 <button id="button" onclick="location.href='{{ url('view/'.$data1.'') }}'"><h4>{{$data}}</h4></button>
 <hr style="text-align:left;margin-left:0">
   @endforeach
@@ -83,7 +83,7 @@
 <div id="Best" class="tabcontent">
   <h2>Best Stories</h2>
    <hr style="text-align:left;margin-left:0">
-   @foreach(array_combine($besttitle, $bestid) as $data => $data1)
+  @foreach(array_combine($story3, $story33) as $data => $data1)
 <button id="button" onclick="location.href='{{ url('view/'.$data1.'') }}'"><h4>{{$data}}</h4></button>
 <hr style="text-align:left;margin-left:0">
   @endforeach

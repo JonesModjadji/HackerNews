@@ -36,10 +36,10 @@
 <div id="Top" class="tabcontent" style="display: block;">
   <h2>Best Stories</h2>
    <hr style="text-align:left;margin-left:0">
-   @for ($i =0; $i < 30; $i++)
-        <button id="button"  onclick="location.href='{{ url('view/'.$bestid[$i].'') }}'"><h4>{{$besttitle[$i]}}</h4></button>
+   @foreach(array_combine($story1, $story11) as $data => $data1)
+<button id="button" onclick="location.href='{{ url('view/'.$data1.'') }}'"><h4>{{$data}}</h4></button>
 <hr style="text-align:left;margin-left:0">
-       @endfor
+  @endforeach
 
   
 
